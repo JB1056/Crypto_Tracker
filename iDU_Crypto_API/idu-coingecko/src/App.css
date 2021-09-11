@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background-color: #3c3c3c;
+}
+
+ul {
+  list-style: none;
+}
+
+h1.idu-header {
+  text-align: center;
+  margin-top: 25 ;
+  margin-bottom: 35;
+  color: aqua;
+  font-family: 'Arial', 'Gill Sans MT', 
+    Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.displayPage {
+  border-color: white !important;
+  border-style: outset !important;
+}
