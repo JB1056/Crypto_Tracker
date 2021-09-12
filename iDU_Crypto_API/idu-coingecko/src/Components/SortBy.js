@@ -2,8 +2,8 @@ import React from "react";
 
 function SortBy() {
     return (
-        <div>
-
+        <div className="sortBy">
+           Placeholder     
         </div>
     )
 }
