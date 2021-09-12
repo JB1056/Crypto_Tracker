@@ -14,26 +14,60 @@ ul {
 }
 
 span {
-  padding: 0.5em;
+  padding: 0.5rem;
 }
+
+
+/* .container {
+  display: inline-table;
+} */
 
 .displayPage {
   border-color: white !important;
   border-style: double !important;
   background-color: white;
   border-radius: 0.5rem;
-  margin: 10%;
+  margin-top: 0 !important;
+  margin: 3rem;
+  min-width: 50rem;
 }
 
-.coinName {
-  text-transform: capitalize;
+.coinHover {
+	float:left;
+	position:relative;
+	margin:3px;
+}
+
+.coinHover:hover {
+	border:0;
+	z-index:1;
+}
+.coinHover span { 
+	position:absolute;
+	visibility:hidden;
+}
+.coinHover:hover span { 
+	visibility:visible;
+	top:2rem; left:2rem; 
+  border-style: solid;
+  border-radius: 5px;
+  border-color: gray;
+  border-width: 1px;
+  background-color: whitesmoke;
+  opacity: 0.8;
+  font-size: x-small;
+}
+
+.coinHover:hover span.marketPosition { 
+	visibility:visible;
+	top:1rem; left:-8rem; 
 }
 
 h1.idu-header {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-  color: aqua;
+  color: goldenrod;
   font-family: 'Arial', 'Gill Sans MT', 
     Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -66,4 +100,5 @@ img.coinlist-image {
   width: 50px;
   display: inline;
 }
+
 
