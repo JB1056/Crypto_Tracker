@@ -1,54 +1,95 @@
+/* Universal Elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none !important;
+  font-family: 'Lucida Sans Regular', Verdana;
 }
 
 body {
   background-color: #3c3c3c;
 }
 
-ul {
-  list-style: none;
-}
-
 span {
   padding: 0.5rem;
 }
 
-
-/* .container {
-  display: inline-table;
-} */
-
+/* Class Elements */
 .displayPage {
+  /* Simple Background colour and border */
   border-color: white !important;
-  border-style: double !important;
+  border-style: solid !important;
   background-color: white;
+
+  /* Set spacing and sizing */
   border-radius: 0.5rem;
   margin-top: 0 !important;
   margin: 3rem;
   min-width: 50rem;
 }
 
-.coinHover {
-	float:left;
-	position:relative;
-	margin:3px;
+.coinCentre {
+  /* Balance positioning of coin name and price */
+  width: 37.5%;
+  text-align: center;
 }
 
+.coinHover {
+  /* Define size of elements containing hovers */
+	margin:3px;
+  width: 25%;
+}
+
+.marketCap {
+  float: right;
+}
+
+.dropdown-btn {
+  background-color: #2575b6;
+  color: white;
+  padding: 0.75rem;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-list a {
+  /* Style inside the dropdown */
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.coinHover span { 
+  position: absolute;
+	visibility:hidden;
+}
+
+/* Active elements */
 .coinHover:hover {
 	border:0;
 	z-index:1;
 }
-.coinHover span { 
-	position:absolute;
-	visibility:hidden;
-}
+
 .coinHover:hover span { 
-	visibility:visible;
-	top:2rem; left:2rem; 
+  /* Show hover element, provide position anchor */
+  bottom: 5px; left: 2rem;
+	visibility:visible; 
+
+  /* Style general hover element */
   border-style: solid;
   border-radius: 5px;
   border-color: gray;
@@ -59,8 +100,17 @@ span {
 }
 
 .coinHover:hover span.marketPosition { 
+  /* Modify position anchor for marketPosition hover */
 	visibility:visible;
-	top:1rem; left:-8rem; 
+	right:0.5rem; left:auto; 
+}
+
+.dropdown-btn:hover .dropdown-btn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown-list a:hover {
+  background-color: #ddd
 }
 
 h1.idu-header {
@@ -72,24 +122,30 @@ h1.idu-header {
     Calibri, 'Trebuchet MS', sans-serif;
 }
 
-div.sortBy {
+div.dropdown {
   margin-top: 0.5rem;
   padding: 0.5rem;
+  position: relative;
+  display: inline-block;
 }
 
 ul.coinlist {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin-top: 0.5rem;
 }
 
 li.coinlist-item {
+  /* Position hover relative to li, center all content */
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
+  /* Apply simple border and spacing to define each unique coin */
   color: black;
   margin: 0.5rem;
   padding: 0.5rem;
+
   border-style: solid !important;
   border-color: gray;
   border-width: 1px;
@@ -100,5 +156,3 @@ img.coinlist-image {
   width: 50px;
   display: inline;
 }
-
-
