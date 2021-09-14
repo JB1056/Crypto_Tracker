@@ -15,7 +15,7 @@ function Coin({ coin }) {
 
             <div className="coinHover">
                 <p className="marketCap">{coin.market_cap_rank}</p>
-                <span className="marketPosition">Market Cap: 8873</span>
+                <span className="marketPosition">Market Cap: {coin.market_cap}</span>
             </div>
         </li>
     );

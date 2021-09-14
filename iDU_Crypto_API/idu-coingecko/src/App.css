@@ -11,10 +11,6 @@ body {
   background-color: #3c3c3c;
 }
 
-span {
-  padding: 0.5rem;
-}
-
 /* Class Elements */
 .displayPage {
   /* Simple Background colour and border */
@@ -27,6 +23,11 @@ span {
   margin-top: 0 !important;
   margin: 3rem;
   min-width: 50rem;
+}
+
+.input-bar {
+  display: flex;
+  align-items: center;
 }
 
 .coinCentre {
@@ -74,6 +75,7 @@ span {
 
 
 .coinHover span { 
+  padding: 0.5rem;
   position: absolute;
 	visibility:hidden;
 }
@@ -125,8 +127,7 @@ h1.idu-header {
 div.dropdown {
   margin-top: 0.5rem;
   padding: 0.5rem;
-  position: relative;
-  display: inline-block;
+  width: 35%;
 }
 
 ul.coinlist {

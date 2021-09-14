@@ -5,8 +5,11 @@ import SortBy from "./Components/SortBy";
 function DisplayPage() {
     return (
         <div className="displayPage">
-            <SortBy/>
-            <CoinList/>
+            <div className="input-bar">
+                <SortBy />
+                <div className="bob">testo</div>
+            </div>
+            <CoinList />
         </div>
     )
 }
