@@ -1,70 +1,109 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CoinContext } from "./CoinContextProvider";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Coin from "./Coin";
-import { handleChange, sortCoin } from "./SortBy";
+import SelectDropdown from "./NavigationTools";
 
 const coingeckoAxiosURL = axios.create({
-  baseURL: "https://api.coingecko.com/api/v3",
+  baseURL: "https://api.coingecko.com/api/v3"
 });
 
-; 
-
-export const coinData = () => {
-  const coinSates = FetchCoins()
-  return coinSates
+function fetchData() {
+  console.log("API WAS PULLED")
+  // Use Axios to retrieve top 100 (Descending) crypto by market cap
+  return coingeckoAxiosURL.get("/coins/markets", {
+    params: {
+      vs_currency: "aud",
+      order: "market_cap_desc",
+      per_page: "100"
+    }
+  });
 }
 
+const orderCoins = (list, key, direction) => {
+  const isAsc = direction === "asc";
 
-function FetchCoins() {
+  return list.slice().sort((a, b) => {
+    // Compare values and determine ordering
+    // lowercase string for fair comparison
+    if (key === "name") {
+      if (a[key].toString().toLowerCase() < b[key].toString().toLowerCase()) {
+        return isAsc ? -1 : 1;
+      }
+      if (a[key].toString().toLowerCase() > b[key].toString().toLowerCase()) {
+        return isAsc ? 1 : -1;
+      }
+    } else {
+      if (a[key] < b[key]) {
+        return isAsc ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return isAsc ? 1 : -1;
+      }
+    }
+    return 0;
+  });
+};
+
+function useFetchCoins() {
   // States
-  const [coin, setCoin] = useState([]);
+  const [coins, setCoins] = useState([]);
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true)
-      // Use Axios to retrieve top 100 (Descending) crypto by market cap
-      const response = await coingeckoAxiosURL.get("/coins/markets", {
-        params: {
-          vs_currency: "aud",
-          order: "market_cap_desc",
-          per_page: "100"
-        }
-      })
-      setCoin(response.data)
-      setIsLoading(false)
-    }
-    fetchData()
-  }, [])
-  return [coin, isLoading]
-}
-
-// generates list of coins from aquired API response 
-const createList = (isLoading, coin) => {
-  // Check if response is still loading
-  if (isLoading) {
-    return <div>Loading...</div>
+  function sortCoins(key, direction) {
+    setCoins((val) => orderCoins(val, key, direction));
   }
 
-  //console.log(coin.sort(sortCoin(e.value)))
-  // console.log(coin.sort(sortCoin(handleChange)))
-  //sort(sortCoin(handleChange()))
+  useEffect(() => {
+    async function load() {
+      try {
+        setError(null);
+        setIsLoading(true);
+        const response = await fetchData();
+        setCoins(response.data);
+      } catch (e) {
+        setError("Failed to fetch.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    load();
+  }, []);
+  return [coins, sortCoins, isLoading, error];
+}
+
+// generates list of coins from aquired API response
+const CoinList = () => {
+  const [coins, sortCoins, isLoading, error] = useFetchCoins();
+
+  function onChange(options, value) {
+    const { key, direction } = options.find((o) => o.value === value);
+    sortCoins(key, direction);
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <ul className="coinlist"><hr />
+    <div>
+      <div className="input-bar">
+        <SelectDropdown onChangeCallback={onChange} />
+        <div className="bob">testo</div>
+      </div>
+      <ul className="coinlist">
 
-      
-      {coin.map(coin => {
-        return <Coin key={coin.id} coin={coin} />
-      })}
-    </ul>
-  )
-}
-
-function CoinList() {
-  // const { contextCoin, isLoading } = useContext(CoinContext)
-  return <div>{createList(FetchCoins()[1], FetchCoins()[0])}</div>
-}
+        <hr />
+        {coins.map((coin) => {
+          return <Coin key={coin.id} coin={coin} />;
+        })}
+      </ul>
+    </div>
+  );
+};
 
 export default CoinList;
