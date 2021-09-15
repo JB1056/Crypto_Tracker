@@ -14,7 +14,7 @@ package.json is available for convenience
 
 ## How to Install
 1. unzip Application.
-2. open terminal and install dependencies, this can be easily done by using your preferred *npm install* or *yard add package.json*.
+2. open terminal and install dependencies, this can be easily done by using your preferred *npm install* or *yarn add package.json*.
 3. start the application from the terminal using your preferred *npm start* or *yarn start*.
 
 
