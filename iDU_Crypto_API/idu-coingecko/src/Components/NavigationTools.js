@@ -9,7 +9,7 @@ const options = [
   { label: 'Price (High-Low)', value: 5, key: 'current_price', direction: 'desc' }
 ]; // array containing dropdown menu options and key information
 
-export default function SelectDropdown({ onChangeCallback }) {
+export function SelectDropdown({ onChangeCallback }) {
   return (
     <div className="dropdown">
       <Select
@@ -17,6 +17,23 @@ export default function SelectDropdown({ onChangeCallback }) {
         defaultValue={options[4]}
         onChange={(e) => onChangeCallback(options, e.value)}
       />
+    </div>
+  );
+}
+
+export function SearchBar({ searchQuery, setSearchQuery }) {
+  return (
+    <div className="searchBar">
+        <input
+          value={searchQuery}
+          onInput={e => setSearchQuery(e.target.value)}
+          onFocus={() => setSearchQuery("")}
+          type="text"
+          id="coinSearch"
+          placeholder="Search Coins"
+          name="filter"
+          className="searchField"
+        />
     </div>
   );
 }
