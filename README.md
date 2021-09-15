@@ -9,6 +9,7 @@ This project uses react.js
 * react-router-dom
 * react-select
 * axios
+
 package.json is available for convenience
 
 ## How to Install
