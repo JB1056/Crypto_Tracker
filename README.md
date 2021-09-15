@@ -3,7 +3,7 @@ An interactable display, showcasing the top 100 coins by Market Cap.
 Coins are shown in a list-like display in a given order on a simple user interface
 
 ## Requirements
-* This project uses react.js
+This project uses react.js
 ### Dependencies
 * react-dom
 * react-router-dom
