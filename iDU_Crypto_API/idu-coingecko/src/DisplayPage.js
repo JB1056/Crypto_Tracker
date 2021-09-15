@@ -1,14 +1,12 @@
 import React from "react";
 import CoinList from "./Components/CoinList";
-import SortBy from "./Components/SortBy";
 
-function displayPage() {
+function DisplayPage() {
     return (
-        <div>
-            <SortBy/>
-            <CoinList/>
+        <div className="displayPage">
+            <CoinList />
         </div>
     )
 }
 
-export default displayPage;
+export default DisplayPage;
