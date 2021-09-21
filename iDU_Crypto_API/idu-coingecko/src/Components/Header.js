@@ -4,7 +4,7 @@ import '../App';
 function Header() {
     return (
         <div>
-            <h1 className="idu-header">iDU Challenge</h1>
+            <h1 className="title-header">Top 100 Crypto Currencies</h1>
         </div>
     );
 };
