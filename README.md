@@ -1,7 +1,9 @@
-# iDU_Challenge
+# CRYPTO_TRACKER
 An interactable display, showcasing the top 100 coins by Market Cap.
 Coins are shown in a list-like display in a given order on a simple user interface.
 The initial given order is asceding by current market position
+
+A simple demonstration of react & js knowledge
 
 ## Requirements
 This project uses react.js
